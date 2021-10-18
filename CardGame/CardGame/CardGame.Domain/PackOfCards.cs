@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using CardGame.Domain.Exceptions;
+using CardGame.Domain.Helpers;
 using CardGame.Domain.Interfaces;
 
 namespace CardGame.Domain
@@ -36,7 +38,9 @@ namespace CardGame.Domain
 
         public void Shuffle()
         {
-            throw new NotImplementedException();
+            _cards = CardsInitializer.InitializeCards();
+            var rng = new Random();
+            _cards = _cards.OrderBy(card => rng.Next()).ToArray();
         }
 
         public ICard TakeCardFromTopOfPack()
