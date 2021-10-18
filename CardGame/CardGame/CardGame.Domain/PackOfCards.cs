@@ -9,6 +9,7 @@ namespace CardGame.Domain
     public class PackOfCards : IPackOfCards
     {
         private ICard[] _cards = new ICard[52];
+        private int _position = 0;
 
         public PackOfCards(ICard[] cards)
         {
@@ -20,7 +21,13 @@ namespace CardGame.Domain
             Array.Copy(cards, _cards, cards.Length);
         }
 
-        public int Count => _cards.Length;
+        public int Count 
+        {
+            get
+            {
+                return _cards.Length - _position;
+            }
+        }
 
         public IEnumerator<ICard> GetEnumerator()
         {
@@ -34,7 +41,13 @@ namespace CardGame.Domain
 
         public ICard TakeCardFromTopOfPack()
         {
-            throw new NotImplementedException();
+            if (_position > 51)
+            {
+                throw new PackOfCardsEmptyException();
+            }
+            var result = _cards[_position];
+            _position++;
+            return result;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
