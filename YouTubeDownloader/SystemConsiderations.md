@@ -3,7 +3,7 @@
 Ways that high availabilty can be ensured are:
 
 - minimising single points of failure
-  - IE having multiple instances of services either running or warmed up ready to be invoked
+  - IE having multiple instances of services either running or warmed up ready to be invoked (fan out fan in)
 - when deploying any new features utilising techniques like Blue/Green deployment
 - regular backups
 - data being copied across multiple locations when created
