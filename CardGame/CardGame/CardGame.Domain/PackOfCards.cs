@@ -21,7 +21,7 @@ namespace CardGame.Domain
             Array.Copy(cards, _cards, cards.Length);
         }
 
-        public int Count 
+        public int Count
         {
             get
             {
@@ -31,7 +31,7 @@ namespace CardGame.Domain
 
         public IEnumerator<ICard> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new PackOfCardsEnumerator(_cards);
         }
 
         public void Shuffle()
@@ -52,7 +52,7 @@ namespace CardGame.Domain
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 }
