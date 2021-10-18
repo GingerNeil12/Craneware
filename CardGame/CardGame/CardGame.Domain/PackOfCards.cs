@@ -39,6 +39,7 @@ namespace CardGame.Domain
         public void Shuffle()
         {
             _cards = CardsInitializer.InitializeCards();
+            _position = 0;
             var rng = new Random();
             _cards = _cards.OrderBy(card => rng.Next()).ToArray();
         }
